@@ -4,12 +4,18 @@ namespace App\Entity;
 
 use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
  */
 class Users
 {
+    use TimestampableEntity;
+    use BlameableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -23,6 +29,11 @@ class Users
     private $username;
 
     /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $email;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $password;
@@ -31,6 +42,15 @@ class Users
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $token;
+
+    /**
+     * @var $createdBy
+     *
+     * @Gedmo\Blameable(on="create")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users")
+     * @ORM\JoinColumn(name="created_by", referencedColumnName="username")
+     */
+    protected $createdBy;
 
     public function getId(): ?int
     {
@@ -45,6 +65,18 @@ class Users
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
