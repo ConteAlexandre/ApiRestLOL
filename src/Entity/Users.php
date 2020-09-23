@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm
+ * User: shadowluffy
+ * Date: 9/23/20
+ * Time: 11:08 AM
+ */
 
 namespace App\Entity;
 
@@ -10,6 +16,8 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
+ *
+ * @author CONTE Alexandre <pro.alexandre.conte@gmail.com>
  */
 class Users
 {
