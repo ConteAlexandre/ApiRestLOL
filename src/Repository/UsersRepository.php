@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm
+ * User: shadowluffy
+ * Date: 9/23/20
+ * Time: 11:08 AM
+ */
 
 namespace App\Repository;
 
@@ -11,6 +17,8 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Users|null findOneBy(array $criteria, array $orderBy = null)
  * @method Users[]    findAll()
  * @method Users[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ *
+ * @author CONTE Alexandre <pro.alexandre.conte@gmail.com>
  */
 class UsersRepository extends ServiceEntityRepository
 {
